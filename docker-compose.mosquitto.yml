@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto-container
+    ports:
+      - "1883:1883"
+    networks:
+      - mqtt-network
+    volumes:
+      - ./.docker/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+networks:
+  mqtt-network:

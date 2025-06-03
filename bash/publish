@@ -1,0 +1,3 @@
+#!/bin/bash
+# mosquitto_pub -h 127.0.0.1 -p 1883 -t "demo" -m "ping"
+docker exec -it mosquitto-container mosquitto_pub -h 127.0.1 -p 1883 -t "demo" -m "ping / $(date +%Y-%m-%dT%H:%M:%S)"

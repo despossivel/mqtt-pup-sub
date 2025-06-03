@@ -1,0 +1,23 @@
+# Use a imagem oficial do Mosquitto como base
+FROM eclipse-mosquitto:latest
+
+# Expor a porta MQTT padrão
+EXPOSE 1883
+
+
+RUN chmod 0644 ./ca_certificates/* ./certs/*
+RUN chmod 0755 ./ca_certificates ./certs
+
+# RUN mkdir -p /var/log/mosquitto/
+# RUN chown -R mosquitto: /var/log/mosquitto/
+# RUN touch /mosquitto/config/passwd
+# RUN chmod 600 /mosquitto/config/passwd
+
+# Criar o diretório de log e configurar permissões
+# RUN mkdir -p /var/log/mosquitto && chown -R mosquitto: /var/log/mosquitto
+
+# Copiar o arquivo de configuração personalizado
+COPY mosquitto.conf /mosquitto/config/
+
+# Comando padrão para iniciar o servidor Mosquitto
+CMD ["/usr/sbin/mosquitto"]
