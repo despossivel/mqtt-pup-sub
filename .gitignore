@@ -1,3 +1,7 @@
 node_modules/
 package-lock.json
 logs/
+yarn.lock
+.DS_Store
+.env
+dist/
